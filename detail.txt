@@ -1,0 +1,62 @@
+Act as a Senior Frontend Developer / UX Designer. I need you to build a portfolio website structure using **Next.js 14 (App Router)**, **Tailwind CSS**, and **Framer Motion**.
+
+**Theme & Aesthetic (CRITICAL):**
+The design must be based on the character **"Phainon" from Honkai: Star Rail**.
+* **Core Palette:** Deep Indigo/Void Blue backgrounds, Royal Gold accents (`#D4AF37`), and Ethereal/Ice Blue glows (`#00F0FF`).
+* **Vibe:** Celestial, Royal, "Worldbearing," and Futuristic. Think "Glassmorphism meets Astral Divinity."
+* **Visuals:** Use floating gold geometric shapes (halos/rings) and deep starry backgrounds.
+
+**Tech Stack:**
+* **Framework:** Next.js 14 (App Router)
+* **Styling:** Tailwind CSS (with custom config for Phainon colors)
+* **Icons:** `lucide-react`
+* **Animations:** `framer-motion` (smooth, heavy, "weighty" celestial transitions)
+
+**Deliverable 1: Tailwind Configuration (`tailwind.config.ts`)**
+Start by setting up the specific colors:
+* `phainon-bg`: A rich, dark void blue (almost black, e.g., `#0a0e17`).
+* `phainon-gold`: A metallic royal gold for text highlights/borders.
+* `phainon-blue`: A glowing cyan/electric blue for hover states.
+* `glass-panel`: A specific utility for backdrop-blur, low opacity white/blue tint.
+
+**Deliverable 2: Components (Responsive & Interactive)**
+
+1.  **`layout.tsx` & `globals.css`:**
+    * Set the body background to `phainon-bg`.
+    * Add a subtle "stars" or "nebula" background effect using CSS (radial gradients).
+
+2.  **`Navbar.tsx`:**
+    * Glassmorphic sticky top bar.
+    * Logo: "YOURNAME" in gold, serif font (import `Cinzel` or `Playfair Display` for headings).
+    * Links: Glow gold on hover.
+
+3.  **`Hero.tsx`:**
+    * **Left:** "Typewriter" effect text: "Architect of the Digital Void."
+    * **Right:** Instead of a simple image, create a CSS/Framer Motion animation of a **Rotating Golden Halo/Ring** behind the profile picture to mimic Phainon’s divinity.
+    * **Buttons:** Primary button should be a "Gold Gradient" outline.
+
+4.  **`Marquee.tsx`:**
+    * Infinite scroll text: "✦ WORLD BEARING ✦ FULL STACK ✦ CELESTIAL CODE ✦".
+    * Use a thin gold border top and bottom.
+
+5.  **`Projects.tsx` (The "Arsenal"):**
+    * Grid Layout.
+    * **Card Style:** Dark glass cards with a subtle gold border that glows on hover.
+    * Title in Gold, Description in silver/gray.
+    * Tech Stack badges: Tiny pill shapes with blue glows.
+
+6.  **`Experience.tsx`:**
+    * A vertical timeline. Use "Stars" or "Diamonds" as the bullet points on the line.
+
+**Instructions for Output:**
+* Please provide the full code for `tailwind.config.ts` first.
+* Then provide the `layout.tsx` (including the font imports).
+* Then provide `Hero.tsx`, `Navbar.tsx`, and `Projects.tsx`.
+* Use standard `<div>` placeholders for images but style them with gradients so it looks good immediately.
+
+🎨 Design Notes for You
+Colors: I chose Deep Indigo & Gold because Phainon is often associated with "Order," "Royalty," and the "Chrysos Heir" aesthetic (Gold/Sun motifs) mixed with the deep blue of the Star Rail universe.
+
+Fonts: The prompt asks for Cinzel (a serif font) for headings. This is very important to get that "Honkai" elite/royal text look, differentiating it from a generic dev portfolio.
+
+Glows: The "Glassmorphism" will be tinted blue/gold instead of just white/gray.
