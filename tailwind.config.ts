@@ -10,26 +10,40 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "phainon-bg": "#0a0e17",
-        "phainon-gold": "#D4AF37",
-        "phainon-blue": "#00F0FF",
-      },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "phainon-gradient": "linear-gradient(to right, #050A14, #0F1623)",
+        "bg-void": "var(--color-bg-void)",
+        "bg-card": "var(--color-bg-card)",
+        "bg-glass": "var(--color-bg-glass)", // Added glass background
+        "accent-gold": "var(--color-accent-gold)",
+        "accent-gold-dim": "var(--color-accent-gold-dim)",
+        "accent-cyan": "var(--color-accent-cyan)",
+        "accent-destruct": "var(--color-accent-destruct)",
+        "text-primary": "var(--color-text-primary)",
+        "text-muted": "var(--color-text-muted)",
+        "text-gold": "var(--color-text-gold)", // Added gold text gradient
       },
       fontFamily: {
         sans: ["var(--font-inter)"],
-        serif: ["var(--font-cinzel)"], // For headings
+        serif: ["var(--font-cinzel)"],
+        header: ["var(--font-oswald)"], // Kept existing header font
       },
       animation: {
-        marquee: 'marquee 30s linear infinite',
+        marquee: "marquee 30s linear infinite",
+        "spin-slow": "spin 20s linear infinite",
+        "reverse-spin": "spin-reverse 20s linear infinite",
       },
       keyframes: {
         marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-100%)' },
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
         },
+        "spin-reverse": {
+          from: { transform: "rotate(360deg)" },
+          to: { transform: "rotate(0deg)" },
+        },
+      },
+      boxShadow: {
+        "gold-glow": "var(--shadow-gold-glow)",
+        "cyan-glow": "var(--shadow-cyan-glow)",
       },
     },
   },
@@ -37,7 +51,7 @@ const config: Config = {
     plugin(function ({ addUtilities }) {
       addUtilities({
         ".glass-panel": {
-          "background-color": "rgba(0, 240, 255, 0.05)",
+          "background-color": "var(--color-bg-glass)",
           "backdrop-filter": "blur(12px)",
           "-webkit-backdrop-filter": "blur(12px)",
         },

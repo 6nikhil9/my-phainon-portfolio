@@ -1,29 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..700&family=Inter:wght@300..700&family=Oswald:wght@300..700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-body {
-  color: #EAEAEA;
-  background-color: #0a0e17;
-  background-image: 
-    radial-gradient(at 20% 20%, hsla(210, 40%, 15%, 0.5) 0px, transparent 50%),
-    radial-gradient(at 80% 20%, hsla(280, 40%, 15%, 0.5) 0px, transparent 50%),
-    radial-gradient(at 20% 80%, hsla(340, 40%, 15%, 0.5) 0px, transparent 50%),
-    radial-gradient(at 80% 80%, hsla(40, 40%, 15%, 0.5) 0px, transparent 50%);
-  overflow-x: hidden;
+/*
+  Import Google Fonts for the "Phainon" theme
+  - Cinzel: For headings, a sharp, elegant serif with Greek-inspired feel
+  - Inter: For body text, a clean sans-serif for readability (Sci-Fi UI)
+*/
+
+
+:root {
+  /* =========================================
+     COLOR PALETTE: "Void & Gold"
+     ========================================= */
+
+  /* --- Backgrounds --- */
+  --color-bg-void: #030512;
+  --color-bg-card: #0e1224;
+  --color-bg-glass: rgba(14, 18, 36, 0.75); /* Semi-transparent for glassmorphism */
+
+  /* --- Accents (The Power Sources) --- */
+  --color-accent-gold: #FFD700; /* Solar Gold */
+  --color-accent-gold-dim: #C5A059; /* Dimmed Gold for subtle accents */
+  --color-accent-cyan: #4DEEEA; /* A contrasting but complementary glow */
+  --color-accent-destruct: #FF2A2A; /* Crimson/Burned Red for destruction elements */
+
+  /* --- Typography --- */
+  --color-text-primary: #FFFFFF; /* Marble White/Platinum */
+  --color-text-muted: #8F9BB3; /* For secondary text, slightly greyed */
+  --color-text-gold: linear-gradient(180deg, #FFD700 0%, #C5A059 100%); /* Gold text gradient */
+
+  /* =========================================
+     LIGHTING & EFFECTS (The "Phainon" Feel)
+     ========================================= */
+
+  /* --- Shadows & Glows --- */
+  --shadow-gold-glow: 0px 0px 15px rgba(255, 215, 0, 0.4);
+  --shadow-cyan-glow: 0px 0px 20px rgba(77, 238, 234, 0.3);
+
+  /* --- Borders --- */
+  --border-gold: 1px solid var(--color-accent-gold-dim);
+  --border-subtle: 1px solid rgba(255, 255, 255, 0.1);
+
+  /* =========================================
+     FONT VARIABLES
+     ========================================= */
+  --font-cinzel: 'Cinzel', serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-oswald: 'Oswald', sans-serif; /* Assuming Oswald is used for some headers */
 }
 
-/* Custom Scrollbar for that futuristic feel */
+body {
+  background-color: var(--color-bg-void);
+  color: var(--color-text-primary);
+  /* Optional: Subtle noise texture to mimic the graphic poster style */
+  /* background-image: url('/assets/noise-overlay.png'); */
+  overflow-x: hidden;
+  font-family: var(--font-inter); /* Default body font */
+}
+
+/* 1. The Cards (Glassy Dark Blue with Gold Borders) */
+.phainon-card {
+  background: var(--color-bg-card);
+  border: 1px solid rgba(197, 160, 89, 0.3); /* Dim gold border */
+  border-radius: 4px; /* Sharp, not too round */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.phainon-card:hover {
+  border-color: var(--color-accent-gold);
+  box-shadow: var(--shadow-gold-glow);
+  transform: translateY(-2px);
+}
+
+/* 2. The Typography (Poster Style) */
+h1, h2 {
+  font-family: var(--font-cinzel); /* Regal, sharp serifs */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  /* Gold Text Gradient */
+  background: var(--color-text-gold);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* 3. The "Kintsugi" Divider */
+hr.gold-crack {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-gold), transparent);
+  position: relative;
+  overflow: visible;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0e17;
+  background: var(--color-bg-void);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1f2937;
+  background: var(--color-accent-gold-dim);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4AF37; /* Gold on hover */
+  background: var(--color-accent-gold);
 }

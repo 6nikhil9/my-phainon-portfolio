@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import styles from "./contact.module.css";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.8 }}
-        className="glass-panel border border-phainon-gold/20 rounded-2xl p-8 md:p-12 max-w-2xl mx-auto"
+        className="max-w-2xl mx-auto"
       >
         <div className="text-center">
           <h2 className="text-3xl md:text-5xl font-serif font-bold text-phainon-gold mb-4">
@@ -39,7 +40,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-8">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-phainon-gold mb-2">Name</label>
             <input
@@ -49,7 +50,7 @@ export default function Contact() {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full bg-phainon-bg/50 border border-phainon-gold/30 rounded-lg p-3 text-white focus:ring-2 focus:ring-phainon-blue focus:border-phainon-blue transition-all duration-300"
+              className="w-full bg-transparent border-b border-gray-700 text-white p-2 focus:border-b-2 focus:border-phainon-blue focus:shadow-[0_10px_20px_-10px_rgba(0,240,255,0.3)] focus:outline-none transition-all duration-300"
               placeholder="Your Name"
             />
           </div>
@@ -62,7 +63,7 @@ export default function Contact() {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full bg-phainon-bg/50 border border-phainon-gold/30 rounded-lg p-3 text-white focus:ring-2 focus:ring-phainon-blue focus:border-phainon-blue transition-all duration-300"
+              className="w-full bg-transparent border-b border-gray-700 text-white p-2 focus:border-b-2 focus:border-phainon-blue focus:shadow-[0_10px_20px_-10px_rgba(0,240,255,0.3)] focus:outline-none transition-all duration-300"
               placeholder="your.signal@domain.com"
             />
           </div>
@@ -74,19 +75,17 @@ export default function Contact() {
               value={formData.message}
               onChange={handleChange}
               required
-              rows={5}
-              className="w-full bg-phainon-bg/50 border border-phainon-gold/30 rounded-lg p-3 text-white focus:ring-2 focus:ring-phainon-blue focus:border-phainon-blue transition-all duration-300"
+              rows={4}
+              className="w-full bg-transparent border-b border-gray-700 text-white p-2 focus:border-b-2 focus:border-phainon-blue focus:shadow-[0_10px_20px_-10px_rgba(0,240,255,0.3)] focus:outline-none transition-all duration-300"
               placeholder="Your message..."
             />
           </div>
-          <div className="text-center">
+          <div className="text-center pt-4">
             <button 
               type="submit"
-              className="p-0.5 rounded-lg bg-gradient-to-r from-phainon-gold to-phainon-blue hover:from-phainon-blue hover:to-phainon-gold transition-all group inline-block"
+              className={`group relative overflow-hidden border border-phainon-gold text-phainon-gold px-8 py-3 rounded-lg font-semibold hover:text-phainon-bg transition-colors duration-300 ${styles['transmit-button']}`}
             >
-              <span className="block px-8 py-3 font-semibold text-lg bg-phainon-bg text-white rounded-md">
-                  Transmit Message
-              </span>
+              <span className="relative z-10">Transmit Message</span>
             </button>
           </div>
         </form>

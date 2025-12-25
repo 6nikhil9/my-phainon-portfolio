@@ -1,0 +1,20 @@
+## Error Type
+Runtime TypeError
+
+## Error Message
+Cannot read properties of undefined (reading 'get')
+
+
+    at Hero (components/sections/hero.tsx:17:44)
+    at Home (app\page.tsx:15:8)
+
+## Code Frame
+  15 |   // Parallax for the halo
+  16 |   const springConfig = { stiffness: 100, damping: 30, mass: 1 };
+> 17 |   const translateX = useSpring(useTransform(mouseX, [0, 1], [-50, 50]), springConfig);
+     |                                            ^
+  18 |   const translateY = useSpring(useTransform(mouseY, [0, 1], [-50, 50]), springConfig);
+  19 |
+  20 |   return (
+
+Next.js version: 16.0.5 (Turbopack)

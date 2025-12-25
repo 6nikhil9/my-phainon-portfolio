@@ -1,26 +1,23 @@
 "use client";
-import { Briefcase, Star } from "lucide-react";
+import { Briefcase } from "lucide-react";
+import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
+import 'react-vertical-timeline-component/style.min.css';
 import { motion } from "framer-motion";
+import './experience.module.css';
 
 const experience = [
   {
-    role: "Open Source Aspirant (GSoC 2026)",
-    company: "Open Source Contributions",
-    date: "Dec 2025 – Present",
-    desc: "Currently architecting a roadmap to contribute to major Java/Linux organizations. Deep diving into large codebases and version control mastery.",
+    role: "Machine Learning Intern (2024)",
+    company: "Unified Mentor",
+    date: "Oct 2024",
+    desc: "Learned and applied core machine learning concepts including supervised and unsupervised learning. Built basic models such as Linear Regression, Logistic Regression, KNN, and Decision Trees",
   },
   {
     role: "Master of Computer Applications (MCA)",
     company: "Group 1 University",
-    date: "2024 – 2026",
+    date: "2025 – 2027",
     desc: "Focusing on Database Management Systems (DBMS), Operating Systems, and Advanced Java. Building a foundation for enterprise-level development.",
   },
-  {
-    role: "Java Developer Trainee (Self-Paced)",
-    company: "Self-Study",
-    date: "2024",
-    desc: "Mastered Core Java, Collections Framework, and Multithreading. Completed projects involving GUI development and algorithmic problem solving.",
-  }
 ];
 
 export default function Experience() {
@@ -36,37 +33,27 @@ export default function Experience() {
         The Path
       </motion.h2>
       
-      <div className="relative max-w-3xl mx-auto">
-        {/* The Vertical Line */}
-        <div className="absolute left-4 top-0 h-full w-0.5 bg-gradient-to-b from-phainon-gold/50 via-phainon-blue/50 to-phainon-bg" />
-
+      <VerticalTimeline>
         {experience.map((exp, index) => (
-          <motion.div 
+          <VerticalTimelineElement
             key={index}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8 }}
-            className="relative pl-12 mb-12"
+            className="vertical-timeline-element--work"
+            contentStyle={{ background: 'transparent', boxShadow: 'none', border: 'none' }}
+            contentArrowStyle={{ borderRight: '7px solid rgba(212, 175, 55, 0.2)' }}
+            date={exp.date}
+            iconStyle={{ background: '#0a0e17', color: '#00F0FF', boxShadow: '0 0 15px #D4AF37' }}
+            icon={<Briefcase />}
           >
-            {/* Timeline Star */}
-            <div className="absolute -left-1 top-0">
-                <Star className="h-10 w-10 text-phainon-gold fill-phainon-gold/30" style={{filter: "drop-shadow(0 0 5px theme(colors.phainon-gold))"}} />
-            </div>
-            
-            <div className="glass-panel p-6 rounded-lg border border-phainon-gold/10 hover:border-phainon-gold/30 transition-colors duration-300">
-              <h3 className="text-xl font-bold font-serif text-white flex items-center gap-2">
-                <Briefcase size={18} className="text-phainon-blue" />
-                {exp.role}
-              </h3>
-              <span className="text-sm text-phainon-gold block my-1">{exp.company} | {exp.date}</span>
-              <p className="text-gray-400 text-base">
-                {exp.desc}
-              </p>
-            </div>
-          </motion.div>
+            <h3 className="text-xl font-bold font-serif text-white">
+              {exp.role}
+            </h3>
+            <h4 className="text-md font-bold text-phainon-gold my-1">{exp.company}</h4>
+            <p className="text-gray-400">
+              {exp.desc}
+            </p>
+          </VerticalTimelineElement>
         ))}
-      </div>
+      </VerticalTimeline>
     </section>
   );
 }

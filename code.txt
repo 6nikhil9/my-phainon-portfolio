@@ -1,0 +1,5 @@
+ideally before generating any code keep in my the css theme in your memory.
+so that it's easier for you to generate things better and conveniently.
+for that you need to know the strucuture of the css.
+Therefore, I am providing you some images of phainon in public folder. focus more on css part, I don't care what UI website you gonna use.
+analyse color, backgroundSubtle Hue Shifts,Color Temperature,Value & Saturation,Layer Modes,Shadows,Base Skin,Accents,Color Palettes

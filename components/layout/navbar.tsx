@@ -1,55 +1,85 @@
 "use client";
-import Link from "next/link";
+
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "#about" },
+    { name: "Projects", href: "#projects" },
+    { name: "Experience", href: "#experience" },
+    { name: "Contact", href: "#contact" },
 ];
 
-export default function Navbar() {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const menuVars = {
+    initial: { scaleY: 0 },
+    animate: {
+      scaleY: 1,
+      transition: { duration: 0.5, ease: [0.12, 0, 0.39, 0] },
+    },
+    exit: {
+      scaleY: 0,
+      transition: { delay: 0.5, duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    },
+  };
+
+  const linkVars = {
+    initial: { y: "30vh", transition: { duration: 0.5, ease: [0.37, 0, 0.63, 1] } },
+    open: { y: 0, transition: { ease: [0, 0.55, 0.45, 1], duration: 0.7 } },
+  };
+
+  const containerVars = {
+    initial: { transition: { staggerChildren: 0.09, staggerDirection: -1 } },
+    open: { transition: { delayChildren: 0.3, staggerChildren: 0.09, staggerDirection: 1 } },
+  };
+
   return (
-    <nav className="fixed w-full z-50 top-0 start-0 border-b border-phainon-gold/20 glass-panel">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <Link href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <span className="self-center text-2xl font-serif font-bold text-phainon-gold tracking-widest">
-            YOURNAME
-          </span>
-        </Link>
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-phainon-gold rounded-lg md:hidden hover:bg-phainon-gold/10 focus:outline-none focus:ring-2 focus:ring-phainon-gold/50"
-          >
-            <span className="sr-only">Open main menu</span>
-            {isOpen ? <X /> : <Menu />}
-          </button>
-        </div>
-        <div
-          className={`items-center justify-between w-full md:flex md:w-auto md:order-1 ${
-            isOpen ? "block" : "hidden"
-          }`}
-        >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-phainon-gold/10 rounded-lg md:border-0 glass-panel md:bg-transparent md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0">
-            {navLinks.map((link) => (
-              <li key={link.name}>
-                <Link
-                  href={link.href}
-                  className="block py-2 px-3 text-gray-300 hover:text-phainon-gold transition-colors duration-300 md:p-0 font-sans hover:drop-shadow-[0_0_4px_theme(colors.phainon-gold)]"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <header>
+      {/* --- TOGGLE BUTTON --- */}
+      <div className="fixed top-5 right-5 z-50 cursor-pointer p-2 rounded-md" onClick={toggleMenu}>
+        <div className={`w-8 h-1 bg-accent-gold mb-1 transition-all ${isOpen ? "rotate-45 translate-y-2" : ""}`}></div>
+        <div className={`w-8 h-1 bg-accent-gold mb-1 transition-all ${isOpen ? "opacity-0" : ""}`}></div>
+        <div className={`w-8 h-1 bg-accent-gold transition-all ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}></div>
       </div>
-    </nav>
+
+      {/* --- FULL SCREEN OVERLAY --- */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            variants={menuVars}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            className="fixed left-0 top-0 w-full h-screen origin-top bg-bg-void text-text-primary flex flex-col justify-center items-center z-40"
+          >
+            <motion.div
+              variants={containerVars}
+              initial="initial"
+              animate="open"
+              exit="initial"
+              className="flex flex-col gap-6 text-center font-serif text-4xl uppercase tracking-widest"
+            >
+              {navLinks.map((item, index) => (
+                <div key={index} className="overflow-hidden">
+                    <motion.div variants={linkVars} className="hover:text-accent-gold transition-colors cursor-pointer">
+                        <Link href={item.href} onClick={toggleMenu}>
+                            {item.name}
+                        </Link>
+                    </motion.div>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
-}
+};
+
+export default Navbar;

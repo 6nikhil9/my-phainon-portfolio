@@ -56,28 +56,32 @@ export default function Projects() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="group relative glass-panel border border-phainon-gold/20 rounded-xl overflow-hidden 
-                       hover:border-phainon-gold/50 hover:shadow-[0_0_25px_-5px_theme(colors.phainon-gold)] transition-all duration-300 h-[300px]"
+            className="group relative bg-phainon-bg/40 backdrop-blur-md border border-white/5 rounded-xl overflow-hidden 
+                       hover:border-phainon-gold/50 hover:shadow-[inset_0_0_20px_rgba(212,175,55,0.1)] hover:-translate-y-2 transition-all duration-300"
           >
+            <div className="relative h-48">
+              <div className="absolute inset-0 bg-gradient-to-br from-phainon-bg via-phainon-blue/10 to-phainon-bg" />
+              <div className="absolute inset-0 bg-phainon-gold/30 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            </div>
+
             <div className="p-6">
               <h3 className="text-xl font-bold font-serif text-phainon-gold mb-1">
                 {project.title}
               </h3>
               <p className="text-phainon-blue text-sm mb-3 font-sans italic">"{project.tagline}"</p>
-              <p className="text-gray-400 text-sm mb-4 h-20 line-clamp-4">
+              <p className="text-gray-400 text-sm mb-4 h-16 line-clamp-3">
                 {project.description}
               </p>
               
-              <div className="flex flex-wrap gap-2 mb-6">
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
-                  <span key={tag} className="text-xs px-3 py-1 rounded-full bg-phainon-blue/10 border border-phainon-blue/30 text-phainon-blue
-                                           shadow-[0_0_8px_-2px_theme(colors.phainon-blue)]">
+                  <span key={tag} className="text-xs px-3 py-1 rounded-full bg-phainon-blue/10 text-phainon-blue border border-phainon-blue/20">
                     {tag}
                   </span>
                 ))}
               </div>
               
-              <div className="flex gap-4 absolute bottom-6 right-6">
+              <div className="flex gap-4 pt-2">
                 <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-phainon-gold transition-colors"><Github size={20}/></a>
                 <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-phainon-gold transition-colors"><ExternalLink size={20}/></a>
               </div>

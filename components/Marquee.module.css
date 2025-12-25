@@ -1,0 +1,4 @@
+.text-stroke-gold {
+  -webkit-text-stroke: 1px theme('colors.phainon-gold');
+  paint-order: stroke fill;
+}
